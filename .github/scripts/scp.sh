@@ -4,6 +4,8 @@
 
 set -eu
 
-scp -i $HOME/secrets/pbaba.pem $source $username@$host
+echo $source $username $host $target
+
+scp -i $HOME/secrets/pbaba.pem $source $username@$host$target
 
 echo "I am done baby!"
