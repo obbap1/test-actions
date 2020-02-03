@@ -2,6 +2,6 @@
 
 set -eu
 
-scp -i $HOME/secrets/pbaba.pem $SOURCE $USERNAME@$HOST:${TARGET:-~/}
+scp -i $HOME/secrets/pbaba.pem $source $username@$host:${target:-~/}
 
 echo "I am done baby!"
