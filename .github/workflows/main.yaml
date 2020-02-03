@@ -5,15 +5,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      run: |
-        npm run build
     - uses: actions/checkout@master
-    - name: copy file via ssh password
-      uses: obbap1/simple-scp@master
-      with:
+    - name: Decrypt secret
+      run: ./.github/scripts/decrypt.sh
+      env:
+        LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+    - uses: actions/checkout@master
+    - name: send files over the network
+      run: ./.github/scripts/scp.sh
+      env:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         port: ${{ secrets.PORT }}
-        passphrase: ${{ secrets.PASSPHRASE }}
         source: "/a.js"
         target: "/"
