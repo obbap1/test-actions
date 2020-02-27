@@ -9,9 +9,20 @@
 mkdir $HOME/secrets
 
 count=`ls -1 *.gpg 2>/dev/null | wc -l`
-if [$count != 0]
+if [ $count != 0 ]
 then
-echo "$count"
+    nameOfGpg=`echo *.gpg | awk '{print $1}'`
+    filename="${nameOfGpg%.*}"
+    echo "${filename#**.}" 
+    if [ "${filename#**.}" == "pem" ]
+    then
+        echo 'Valid pem file! Decrypting...'
+    else
+        echo 'Invalid pem file. Use naming system <filename>.pem.gpg'
+    fi
+else
+    echo 'Invalid gpg file. Use naming system <filename>.pem.gpg'
+fi
 
 gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
---output $HOME/secrets/pbaba.pem ${ENC_FILE:- pbaba.pem.gpg}
+--output $HOME/secrets/$filename $nameOfGpg
