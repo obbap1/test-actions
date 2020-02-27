@@ -10,6 +10,6 @@ sudo chmod 644 ~/.ssh/known_hosts
 
 sudo chmod 755 ~/.ssh
 
-scp -o StrictHostKeyChecking=no -v -P $port -i $HOME/secrets/pbaba.pem $source $username@$host:$target
+scp -v -P $port -i $HOME/secrets/pbaba.pem $source $username@$host:$target
 
-echo "I am done baby!!!!"
+echo "I am done baby!!!!" 

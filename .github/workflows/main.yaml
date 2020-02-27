@@ -16,7 +16,7 @@ jobs:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       - uses: actions/checkout@master
       - name: send files over the network
-        run: echo "running..." && cat ~/.ssh/known_hosts && ./.github/scripts/scp.sh
+        run: ./.github/scripts/scp.sh
         env:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
