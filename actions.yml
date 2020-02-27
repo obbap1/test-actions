@@ -1,0 +1,11 @@
+name: 'obbap1/quick-gpg-scp'
+description: 'Run scp when an event is triggered'
+
+inputs:
+  host:
+  username:
+  port:
+  source:
+  target:
+  large_secret_passphrase:
+  ssh_private_key:

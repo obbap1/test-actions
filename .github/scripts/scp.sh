@@ -12,6 +12,6 @@ sudo chmod 755 ~/.ssh
 
 sudo chmod a=rw /dev/tty
 
-scp -v -P $port -i $HOME/secrets/pbaba.pem $source $username@$host:$target
+scp -o StrictHostKeyChecking=no -v -P $port -i $HOME/secrets/pbaba.pem $source $username@$host:$target
 
 echo "I am done baby!!!!" 
