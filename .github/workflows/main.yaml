@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get name of GPG file
-      - uses: actions/checkout@master
         run: |
           nameOfGpg=`echo *.gpg | awk '{print $1}'`
           echo "${nameofGpg}, file has been found"
