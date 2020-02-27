@@ -5,11 +5,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      -name: Get name of GPG file
       - uses: actions/checkout@master
+        run: |
+          nameOfGpg=`echo *.gpg | awk '{print $1}'`
+          echo "${nameofGpg}, file has been found"
+          filename="${nameOfGpg%.*}"
+          pemFileName="${filename#**.}"
+        id: gpg
       - uses: webfactory/ssh-agent@v0.2.0
         with:
           ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
-      - uses: actions/checkout@master
       - uses: obbap1/quick-scp@master
         env:
           HOST: ${{ secrets.HOST }}
@@ -18,3 +24,5 @@ jobs:
           SOURCE: './a.js'
           TARGET: '/home/ubuntu/temp'
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          NAME_OF_GPG: ${{steps.gpg.nameOfGpg}}
+          PEM_FILE_NAME: ${{steps.gpg.pemFileName}}
