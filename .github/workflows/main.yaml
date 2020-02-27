@@ -5,14 +5,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Get name of GPG file
-        run: |
-          nameOfGpg=`echo *.gpg | awk '{print $1}'`
-          echo "${nameofGpg}, file has been found"
-          filename="${nameOfGpg%.*}"
-          pemFileName="${filename#**.}"
-        id: gpg
       - name: Run SSH Agent
         uses: webfactory/ssh-agent@v0.2.0
         with:
@@ -26,5 +18,5 @@ jobs:
           SOURCE: './a.js'
           TARGET: '/home/ubuntu/temp'
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-          NAME_OF_GPG: ${{steps.gpg.nameOfGpg}}
-          PEM_FILE_NAME: ${{steps.gpg.pemFileName}}
+          NAME_OF_GPG: 'pbaba.pem'
+          PEM_FILE_NAME: 'pbaba.pem.gpg'
