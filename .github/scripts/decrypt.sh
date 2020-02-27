@@ -8,5 +8,10 @@
 
 mkdir $HOME/secrets
 
+count=`ls -1 *.gpg 2>/dev/null | wc -l`
+if [$count != 0]
+then
+echo "$count"
+
 gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
 --output $HOME/secrets/pbaba.pem ${ENC_FILE:- pbaba.pem.gpg}
