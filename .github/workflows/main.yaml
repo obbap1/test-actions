@@ -5,7 +5,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      -name: Get name of GPG file
+      - name: Get name of GPG file
       - uses: actions/checkout@master
         run: |
           nameOfGpg=`echo *.gpg | awk '{print $1}'`
@@ -13,9 +13,11 @@ jobs:
           filename="${nameOfGpg%.*}"
           pemFileName="${filename#**.}"
         id: gpg
+      - name: Run SSH Agent
       - uses: webfactory/ssh-agent@v0.2.0
         with:
           ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
+      - name: Run SCP command
       - uses: obbap1/quick-scp@master
         env:
           HOST: ${{ secrets.HOST }}
