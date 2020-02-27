@@ -10,7 +10,7 @@ jobs:
         with:
           ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
       - uses: actions/checkout@master
-      - uses: obbap1/quick-scp
+      - uses: obbap1/quick-scp@master
       - name: send files over the network
         run: ./.github/scripts/scp.sh
         env:
