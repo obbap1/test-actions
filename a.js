@@ -7,7 +7,7 @@ function log(x) {
   return function(y) {
     console.log({ y });
     return function(z) {
-      console.log({ x, y });
+      console.log({ x, y, z });
     };
   };
 }
