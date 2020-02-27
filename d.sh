@@ -10,8 +10,8 @@ then
     then
         echo 'Valid pem file!'
     else
-        echo 'Invalid pem file. Use naming system <filename>.pem.gpg'
+        echo 'Invalid pem file. Use naming system <filename>.pem.gpg.'
     fi
 else
-    echo 'Invalid gpg file. Use naming system <filename>.pem.gpg'
+    echo 'Invalid gpg file. Use naming system <filename>.pem.gpg.'
 fi
