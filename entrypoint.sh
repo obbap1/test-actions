@@ -34,8 +34,7 @@ gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
 
 # pass souce, username, target and host as environmental variables
 
-
-sudo chmod 600 ~/secrets/pbaba.pem
+sudo chmod 600 ~/secrets/$filename
 
 sudo chmod 644 ~/.ssh/known_hosts
 
@@ -43,6 +42,6 @@ sudo chmod 755 ~/.ssh
 
 sudo chmod a=rw /dev/tty
 
-scp -o StrictHostKeyChecking=no -v -P $port -i $HOME/secrets/pbaba.pem $source $username@$host:$target
+scp -o StrictHostKeyChecking=no -v -P $port -i $HOME/secrets/pbaba.pem $SOURCE $USERNAME@$HOST:$TARGET
 
 echo "I am done baby!!!!" 
