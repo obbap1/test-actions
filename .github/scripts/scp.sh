@@ -10,6 +10,8 @@ sudo chmod 644 ~/.ssh/known_hosts
 
 sudo chmod 755 ~/.ssh
 
+chmod a=rw /dev/tty
+
 scp -v -P $port -i $HOME/secrets/pbaba.pem $source $username@$host:$target
 
 echo "I am done baby!!!!" 
